@@ -6,6 +6,7 @@ public class Main {
     final static String relPath = "rssa_dynamic_data\\Euro28 - dynamic\\";
     final static String demFile = "100_01.dem";
     final static String netFile = "ff.net";
+    final static String patFile = "ff30.pat";
 
     public static Demand[] demands = new Demand[2000];
 
@@ -16,7 +17,7 @@ public class Main {
             for (Demand d : demands) {
                 //System.out.println(d.getIteration());
             }
-            System.out.println("ile: "+demands.size());
+            //System.out.println("ile: "+demands.size());
         }
 
         Topology topology = new Topology(relPath, netFile);
@@ -28,7 +29,24 @@ public class Main {
 
         }
 
-        System.out.println(topology.getLinks()[2][1]);
+        //System.out.println(topology.getLinks()[0][2]);
+
+
+        CandidatesPaths p = new CandidatesPaths();
+
+        CandidatesPaths[][] candidatesPaths = p.loadAllPaths(relPath, patFile);
+        System.out.println(candidatesPaths[0][1].getListOfPaths().get(0).getIndexesOfLinks().get(0));
+
+        System.out.println("--------");
+        for(Integer x : candidatesPaths[27][26].getListOfPaths().get(29).getIndexesOfLinks()){
+            System.out.println(x+" ");
+        }
+
+        System.out.println(candidatesPaths[27][26].getListOfPaths().get(29).getNoLineInFile());
+
+
+
+
 
 
 

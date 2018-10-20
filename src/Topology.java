@@ -10,6 +10,7 @@ public class Topology {
     private int noNodes; //number of Nodes
     private int noLinks;
     private int[][] links = new int[28][28];
+    private List<Link> listLinks = new ArrayList<>();
 
     public Topology(String path, String fileName){
         loadNet(path, fileName);
@@ -24,12 +25,17 @@ public class Topology {
             int indexOfLineInFile = 0;
             int rowIndex = 0;
             int columnIndex;
+            int countLinks = 0;
             while ((strLine = br.readLine()) != null)   {
                 if(indexOfLineInFile != 0 && indexOfLineInFile != 1){
                     String[] tokens = strLine.split("\\t");
 
                     for(columnIndex = 0; columnIndex<tokens.length; columnIndex++){
-                        links[rowIndex][columnIndex] = Integer.parseInt(tokens[columnIndex]);
+                        if(Integer.parseInt(tokens[columnIndex])!=0) {
+                            links[rowIndex][columnIndex] = Integer.parseInt(tokens[columnIndex]);
+                            listLinks.add(new Link(rowIndex, columnIndex, Integer.parseInt(tokens[columnIndex])));
+                            countLinks++;
+                        }
                     }
                     rowIndex++;
                 }
@@ -40,6 +46,7 @@ public class Topology {
                 }
                 indexOfLineInFile++;
             }
+            //System.out.println("count links: "+countLinks);
             in.close();
         }catch (Exception e){
             System.err.println("Error: " + e.getMessage());
@@ -68,5 +75,13 @@ public class Topology {
 
     public void setLinks(int[][] links) {
         this.links = links;
+    }
+
+    public List<Link> getListLinks() {
+        return listLinks;
+    }
+
+    public void setListLinks(List<Link> listLinks) {
+        this.listLinks = listLinks;
     }
 }
