@@ -1,0 +1,4 @@
+.idea*
+/rssa_dynamic_data
+/out
+*.iml
