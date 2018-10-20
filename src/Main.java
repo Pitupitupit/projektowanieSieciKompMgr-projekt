@@ -1,7 +1,3 @@
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 
 public class Main {
 
@@ -12,24 +8,13 @@ public class Main {
     public static Demand[] demands = new Demand[2000];
 
     public static void main(String[] args) {
-        System.out.println("xD");
-        System.out.println(System.getProperty("user.dir"));
+        Demand[] demands = Demand.loadDem(relPath, demFile);
 
-        try{
-            FileInputStream fstream = new FileInputStream(relPath+demFile);
-            DataInputStream in = new DataInputStream(fstream);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String strLine;
-            while ((strLine = br.readLine()) != null)   {
-                String[] tokens = strLine.split(" ");
-                Demand d = new Demand(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
-                demands[Integer.parseInt(tokens[0])] = d;
+        if(demands != null)
+            for(Demand d : demands){
                 System.out.println(d.getIteration());
             }
-            in.close();
-        }catch (Exception e){
-            System.err.println("Error: " + e.getMessage());
-        }
+
     }
 
 }
