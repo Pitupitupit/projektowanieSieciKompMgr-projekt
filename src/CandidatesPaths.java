@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidatesPaths {
-//tablica skladajaca sie z candidate pahts
+
     public static final int k = 30;
 
     private List<Path> listOfPaths = new ArrayList<>(); //rozmiar zawsze 30 (k)

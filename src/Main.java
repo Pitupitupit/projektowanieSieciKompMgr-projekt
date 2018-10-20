@@ -35,16 +35,14 @@ public class Main {
 
 
         CandidatesPaths p = new CandidatesPaths();
-
         CandidatesPaths[][] candidatesPaths = p.loadAllPaths(relPath, patFile);
-        System.out.println(candidatesPaths[0][1].getListOfPaths().get(0).getIndexesOfLinks().get(0));
 
         System.out.println("--------");
         for(Integer x : candidatesPaths[27][26].getListOfPaths().get(29).getIndexesOfLinks()){
-            System.out.println(x+" ");
+            System.out.println(x); //czyli tu sie wyswietla zajete linki przy przesylaniu z 27 wezla do 26
         }
 
-        System.out.println(candidatesPaths[27][26].getListOfPaths().get(29).getNoLineInFile());
+        System.out.println(candidatesPaths[27][26].getListOfPaths().get(29).getNoLineInFile()); //a tu nr linii-1 z ff30.pat
 
 
 
