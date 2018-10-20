@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
         List<Demand> demands = Demand.loadDem(relPath, demFile);
 
+        System.out.println("Dzien dobry!");
+
         if(demands != null) {
             for (Demand d : demands) {
                 //System.out.println(d.getIteration());
