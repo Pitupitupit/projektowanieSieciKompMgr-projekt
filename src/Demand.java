@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Demand {
     private int iteration;
@@ -26,8 +28,8 @@ public class Demand {
         this.duration = Integer.parseInt(duration);
     }
 
-    public static Demand[] loadDem(String path, String demFileName){
-        Demand[] demands = new Demand[2000];
+    public static List<Demand> loadDem(String path, String demFileName){
+        List<Demand> demands = new ArrayList<>();
         try{
             FileInputStream fstream = new FileInputStream(path+demFileName);
             DataInputStream in = new DataInputStream(fstream);
@@ -36,7 +38,7 @@ public class Demand {
             while ((strLine = br.readLine()) != null)   {
                 String[] tokens = strLine.split(" ");
                 Demand d = new Demand(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
-                demands[Integer.parseInt(tokens[0])] = d;
+                demands.add(d);
             }
             in.close();
             return demands;

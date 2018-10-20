@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Main {
 
@@ -8,12 +9,17 @@ public class Main {
     public static Demand[] demands = new Demand[2000];
 
     public static void main(String[] args) {
-        Demand[] demands = Demand.loadDem(relPath, demFile);
+        List<Demand> demands = Demand.loadDem(relPath, demFile);
 
-        if(demands != null)
-            for(Demand d : demands){
+        if(demands != null) {
+            for (Demand d : demands) {
                 System.out.println(d.getIteration());
             }
+            System.out.println("ile: "+demands.size());
+        }
+
+
+
 
     }
 
