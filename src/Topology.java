@@ -84,4 +84,8 @@ public class Topology {
     public void setListLinks(List<Link> listLinks) {
         this.listLinks = listLinks;
     }
+
+    public void updateOneLink(int index,Link l){
+        this.listLinks.set(index,l);
+    }
 }
